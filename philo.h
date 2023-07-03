@@ -1,18 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   philo.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/22 20:34:58 by rarobert          #+#    #+#             */
-/*   Updated: 2023/06/22 20:44:00 by rarobert         ###   ########.fr       */
+/*   Created: 2023/06/22 20:34:54 by rarobert          #+#    #+#             */
+/*   Updated: 2023/07/01 22:43:00 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#ifndef PHILO_H
+# define PHILO_H
 
-int main(int argc, char *argv[])
-{
-	start_threads(argv[1]);
-}
+# include "errors.h"
+# include "messages.h"
+# include <string.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <sys/time.h>
+# include <pthread.h>
+
+# define TRUE 0
+# define FALSE 1
+
+int			philo(int amount);
+// void		throw_error(char *code);
+int			has_error(int argc, char *argv[]);
+long long	get_time(void);
+void		*philife(void *value);
+
+#endif

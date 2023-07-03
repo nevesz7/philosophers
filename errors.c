@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/22 20:34:58 by rarobert          #+#    #+#             */
-/*   Updated: 2023/06/22 20:44:00 by rarobert         ###   ########.fr       */
+/*   Created: 2023/07/02 21:50:25 by rarobert          #+#    #+#             */
+/*   Updated: 2023/07/02 21:59:53 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "errors.h"
+#include <stdio.h>
 
-int main(int argc, char *argv[])
+void	throw_error(char *code)
 {
-	start_threads(argv[1]);
+	if (!philo_strncmp(code, NUMBER_OF_ARGS, philo_strlen(code)))
+		printf("%s\n", NUMBER_OF_ARGS);
 }

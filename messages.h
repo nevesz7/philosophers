@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   messages.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/22 20:34:58 by rarobert          #+#    #+#             */
-/*   Updated: 2023/06/22 20:44:00 by rarobert         ###   ########.fr       */
+/*   Created: 2023/07/01 22:09:33 by rarobert          #+#    #+#             */
+/*   Updated: 2023/07/02 04:59:07 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#ifndef MESSAGES_H
+# define MESSAGES_H
 
-int main(int argc, char *argv[])
-{
-	start_threads(argv[1]);
-}
+# define FORK "has taken a fork"
+# define EAT "is eating"
+# define SLEEP "is sleeping"
+# define THINK "is thinking"
+# define DIED "died"
+
+#endif
