@@ -6,13 +6,13 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 20:34:58 by rarobert          #+#    #+#             */
-/*   Updated: 2023/06/22 20:44:00 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/07/04 11:47:03 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	start_threads(argv[1]);
 }

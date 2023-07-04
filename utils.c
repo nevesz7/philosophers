@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 21:52:03 by rarobert          #+#    #+#             */
-/*   Updated: 2023/07/02 23:11:31 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/07/04 14:27:25 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,26 +43,38 @@ int	philo_atoi(const char *nptr)
 	long int	value;
 	int			i;
 	int			len;
-	int			sign;
 
 	i = 0;
 	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
 		i++;
 	value = 0;
-	sign = FALSE;
-	if (nptr[i] == '-' || nptr[i] == '+')
-	{
-		if (nptr[i] == '-')
-			sign = TRUE;
+	if (nptr[i] == '+')
 		i++;
-	}
 	len = philo_strlen(nptr);
 	while (i <= len && nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		value = (value * 10) + (nptr[i] - 48);
 		i++;
 	}
-	if (sign == TRUE)
-		return (-value);
 	return (value);
+}
+
+static int	philo_isdigit(char c)
+{
+	if (c >= '0' && c <= '9')
+		return (TRUE);
+	return (FALSE);
+}
+
+int	philo_strisdigit(const char *str)
+{
+	if (*str == '+')
+		str++;
+	if (!*str)
+		return (FALSE);
+	while (*str && philo_isdigit(*str))
+		str++;
+	if (*str)
+		return (FALSE);
+	return (TRUE);
 }

@@ -1,7 +1,6 @@
 NAME	= philo
 
 SOURCES	= threats.c \
-		check.c \
 		errors.c \
 		utils.c \
 		test.c

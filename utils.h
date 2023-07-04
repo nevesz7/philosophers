@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/02 21:42:58 by rarobert          #+#    #+#             */
-/*   Updated: 2023/07/02 22:08:38 by rarobert         ###   ########.fr       */
+/*   Created: 2023/07/04 14:15:45 by rarobert          #+#    #+#             */
+/*   Updated: 2023/07/04 14:16:23 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#ifndef UTILS_H
+# define UTILS_H
 
-int	has_error(int argc, char *argv[])
-{
-	if (argc != 5 && argc != 6)
-	{
-		throw_error(NUMBER_OF_ARGS);
-		return (FALSE);
-	}
-	if (argv[0][0] != '.')
-		return (FALSE);
-	return (TRUE);
-}
+int		philo_atoi(const char *nptr);
+int		philo_strlen(const char *str);
+int		philo_strisdigit(const char *str);
+int		philo_strncmp(const char *s1, const char *s2, int n);
+
+#endif

@@ -13,22 +13,22 @@
 #ifndef PHILO_H
 # define PHILO_H
 
-# include "errors.h"
-# include "messages.h"
 # include <string.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <sys/time.h>
 # include <pthread.h>
 
-# define TRUE 0
-# define FALSE 1
+# define TRUE 1
+# define FALSE 0
+
+typedef struct s_philo {
+	int		*input;
+}	t_philo;
 
 int			philo(int amount);
-// void		throw_error(char *code);
-int			has_error(int argc, char *argv[]);
 long long	get_time(void);
+t_philo		*init_philo(int argc, char *argv[]);
 void		*philife(void *value);
 
 #endif
