@@ -22,16 +22,34 @@
 # define TRUE 1
 # define FALSE 0
 
-typedef struct s_philo {
-	int				*input;
+typedef struct s_input {
+	int	nbr_of_pils;
+	int	time_to_die;
+	int	time_to_eat;
+	int	time_to_sleep;
+	int	times_must_eat;
+}	t_input;
+
+typedef struct s_chef {
+	struct s_input	input;
 	u_long			start_time;
 	pthread_mutex_t	*forks;
-}	t_philo;
+	struct s_pil	*pils;
+	pthread_t		chef;
+}	t_chef;
 
+typedef struct s_pil {
+	pthread_t	pil;
+	pthread_mutex_t	*forks;
+	u_long			start_time;
+	struct s_input	input;
+	int				last_meal;
+	int				namumber;
+	//stuff every philo needs to eat and die happily
+}	t_pil;
 
-int				philo(int amount);
-t_philo			*init_philo(int argc, char *argv[]);
+t_input			get_input(int argc, char *argv[]);
+t_chef			*init_chef(int argc, char *argv[]);
 u_long			get_time(void);
-void			*philife(void *value);
 
 #endif

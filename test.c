@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 21:14:34 by rarobert          #+#    #+#             */
-/*   Updated: 2023/07/05 22:32:17 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/07/06 00:37:08 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,50 +15,78 @@
 #include "errors.h"
 #include <stdio.h>
 
-int	*get_input(int argc, char *argv[]);
+void	*chef_routine(void *addr)
+{
+	t_chef	*kitchen;
+
+	kitchen = (t_chef *)addr;
+	printf("RATATTOUILE\n");
+	(void)kitchen;
+	return (NULL);
+}
+
+void	*p_routine(void *addr)
+{
+	t_pil	*platoon;
+
+	platoon = (t_pil *)addr;
+	printf("i just know that nothing i know\n");
+	(void)platoon;
+	return (NULL);
+}
 
 int	main(int argc, char *argv[])
 {
-	t_philo		*philo;
+	t_chef		*chef;
 
-	philo = init_philo(argc, argv);
-	if (philo == NULL)
+	chef = init_chef(argc, argv);
+	if (chef == NULL)
 		exit(0);
-	printf("%d\n", philo->input[0]);
-	printf("%d\n", philo->input[1]);
-	printf("%d\n", philo->input[2]);
-	printf("%d\n", philo->input[3]);
-	printf("%d\n", philo->input[4]);
 }
 
-t_philo	*init_philo(int argc, char *argv[])
+void	start_dinner(t_chef *chef, int argc)
 {
-	t_philo	*philo;
+	int				i;
+
+	i = -1;
+	chef->pils = (t_pil *)malloc(sizeof(t_pil) * argc);
+	chef->forks = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * argc);
+	while (++i < argc)
+		pthread_mutex_init(&chef->forks[i], NULL);
+	i = 0;
+	while (++i < argc)
+		pthread_create(&chef->pils[i].pil, NULL, &p_routine, &chef->pils[i]);
+	pthread_create(&chef->chef, NULL, &chef_routine, chef);
+	pthread_join(chef->chef, NULL);
+	while (--i > 0)
+		pthread_join(chef->pils[i].pil, NULL);
+}
+
+t_chef	*init_chef(int argc, char *argv[])
+{
+	t_chef	*chef;
 
 	if (has_error(argc, argv))
 		return (NULL);
-	philo = (t_philo *)malloc(sizeof(t_philo));
-	philo->input = get_input(argc, argv);
-	philo->start_time = get_time();
-	// philo->forks = (pthread_mutex_t *)malloc(argv[1] * sizeof(pthread_mutex_t));
-	return (philo);
+	chef = (t_chef *)malloc(sizeof(t_chef));
+	chef->input = get_input(argc, argv);
+	chef->start_time = get_time();
+	start_dinner(chef, argc);
+	return (chef);
 }
 
-//input[0] = number_of_philosophers
-//input[1] = time_to_die
-//input[2] = time_to_eat
-//input[3] = time_to_sleep
-//input[4]? = number_of_times_each_philosopher_must_eat
-int	*get_input(int argc, char *argv[])
+t_input	get_input(int argc, char *argv[])
 {
-	int	*input;
-	int	i;
+	t_input	input;
 
-	i = 0;
-	input = (int *)malloc(sizeof(int) * argc);
-	while (++i < argc)
-		input[i - 1] = philo_atoi(argv[i]);
-	input[i] = -1;
+	input.nbr_of_pils = philo_atoi(argv[1]);
+	input.time_to_die = philo_atoi(argv[2]);
+	input.time_to_eat = philo_atoi(argv[3]);
+	input.time_to_sleep = philo_atoi(argv[4]);
+	if (argc == 6)
+		input.times_must_eat = philo_atoi(argv[5]);
+	else
+		input.times_must_eat = -1;
 	return (input);
 }
 
