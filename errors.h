@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 21:04:54 by rarobert          #+#    #+#             */
-/*   Updated: 2023/07/04 14:17:58 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/07/05 22:07:38 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@
 # define ARG5 "Error: Fifth argument is not a valid positive number"
 
 int			has_error(int argc, char *argv[]);
-void		throw_error(char *code);
+void		throw_error(int code);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 20:42:28 by rarobert          #+#    #+#             */
-/*   Updated: 2023/07/02 21:32:09 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/07/05 22:06:32 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	*philife(void *value)
 	int	*i;
 	
 	i = (int *)value;
-	printf("i = %d\n", *i);
 	return i;
 }
 

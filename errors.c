@@ -6,12 +6,13 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 21:50:25 by rarobert          #+#    #+#             */
-/*   Updated: 2023/07/04 14:22:22 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/07/05 22:08:27 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "errors.h"
 #include "utils.h"
+#include "philo.h"
 #include <stdio.h>
 
 int	has_error(int argc, char *argv[])
