@@ -31,25 +31,41 @@ typedef struct s_input {
 }	t_input;
 
 typedef struct s_chef {
-	struct s_input	input;
-	u_long			start_time;
+	int				check;
 	pthread_mutex_t	*forks;
-	struct s_pil	*pils;
 	pthread_t		chef;
+	struct s_input	input;
+	struct s_pil	*pils;
+	u_long			start_time;
 }	t_chef;
 
 typedef struct s_pil {
-	pthread_t	pil;
-	pthread_mutex_t	*forks;
-	u_long			start_time;
-	struct s_input	input;
+	int				check;
 	int				last_meal;
-	int				namumber;
+	int				nbr;
+	pthread_mutex_t	*fork_spoon;
+	pthread_mutex_t	*fork_knife;
+	pthread_t		pil;
+	struct s_input	input;
+	u_long			start_time;
 	//stuff every philo needs to eat and die happily
 }	t_pil;
 
-t_input			get_input(int argc, char *argv[]);
+//init
 t_chef			*init_chef(int argc, char *argv[]);
+t_input			get_input(int argc, char *argv[]);
+t_pil			init_philo(int index, t_chef *chef);
+void			start_dinner(t_chef *chef, int argc);
+
+//philo_functions
+int				eat(t_pil philo);
+void			slip(t_pil philo);
+void			starve(t_pil philo);
+void			think(t_pil philo);
+
+void			*chef_routine(void *addr);
+void			*p_routine(void *addr);
+void			fre_e(t_chef *chef);
 u_long			get_time(void);
 
 #endif

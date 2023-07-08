@@ -1,7 +1,9 @@
 NAME	= philo
 
-SOURCES	= threats.c \
+SOURCES	= memory.c \
+		routines.c \
 		errors.c \
+		start.c \
 		utils.c \
 		test.c
 
@@ -13,7 +15,7 @@ RM		= rm -f
 
 CC 		= cc
 PFLAG	= -lpthread
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -g3
 
 all:		${NAME}
 
