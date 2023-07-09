@@ -1,46 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routines.c                                         :+:      :+:    :+:   */
+/*   zombies.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 15:16:32 by rarobert          #+#    #+#             */
-/*   Updated: 2023/07/07 16:38:00 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/07/09 01:18:09 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-#include <stdio.h>
+#include "messages.h"
 
-void	*chef_routine(void *addr)
+int	can_i_do_it(t_pil philo)
 {
-	t_chef	*kitchen;
-
-	kitchen = (t_chef *)addr;
-	printf("RATATTOUILE\n");
-	(void)kitchen;
-	return (NULL);
+	pthread_mutex_lock(&philo.muts->dinner);
+	if (philo.dinner_is_over)
+	{
+		pthread_mutex_unlock(&philo.muts->dinner);
+		return (FALSE);
+	}
+	pthread_mutex_unlock(&philo.muts->dinner);
+	return (TRUE);
 }
 
-void	slip(t_pil philo)
+void	*z_routine(void *addr)
 {
-	(void)philo;
-	return ;
-	// inspection(philo);
-}
+	t_pil	platoon;
 
-void	think(t_pil philo)
-{
-	(void)philo;
-}
-
-void	*p_routine(void *addr)
-{
-	t_pil	*platoon;
-
-	platoon = (t_pil *)addr;
-	printf("i just know that nothing i know\n");
-	(void)platoon;
+	platoon = *(t_pil *)addr;
+	if (platoon.nbr % 2 && platoon.nbr != 1)
+		usleep(7000);
+	while (can_i_do_it(platoon))
+	{
+		eat(platoon);
+		slip(platoon);
+		think(platoon);
+		if (platoon.meals_eaten == platoon.input.times_must_eat)
+			return (NULL);
+		if (!(platoon.nbr % 2 && platoon.nbr != 1))
+			usleep(3500);
+	}
 	return (NULL);
 }

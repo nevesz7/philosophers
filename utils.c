@@ -6,11 +6,12 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 21:52:03 by rarobert          #+#    #+#             */
-/*   Updated: 2023/07/04 14:27:25 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/07/08 23:38:40 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+#include <sys/time.h>
 
 int	philo_strncmp(const char *s1, const char *s2, int n)
 {
@@ -59,22 +60,23 @@ int	philo_atoi(const char *nptr)
 	return (value);
 }
 
-static int	philo_isdigit(char c)
-{
-	if (c >= '0' && c <= '9')
-		return (TRUE);
-	return (FALSE);
-}
-
 int	philo_strisdigit(const char *str)
 {
 	if (*str == '+')
 		str++;
 	if (!*str)
 		return (FALSE);
-	while (*str && philo_isdigit(*str))
+	while (*str && *str >= '0' && *str <= '9')
 		str++;
 	if (*str)
 		return (FALSE);
 	return (TRUE);
+}
+
+unsigned long	get_time(void)
+{
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	return ((time.tv_sec * 1000) + (time.tv_usec * 0.001));
 }

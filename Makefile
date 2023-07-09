@@ -1,11 +1,14 @@
 NAME	= philo
 
-SOURCES	= memory.c \
-		routines.c \
+SOURCES	= doom.c \
 		errors.c \
+		inspection.c \
+		messages.c \
 		start.c \
 		utils.c \
-		test.c
+		test.c \
+		zombies.c \
+		zombie_actions.c \
 
 HEADERS = philo.h
 
@@ -20,7 +23,7 @@ CFLAGS	= -Wall -Wextra -Werror -g3
 all:		${NAME}
 
 ${NAME}:	${OBJECTS}
-		${CC} ${PFLAG} ${CFLAGS} -o ${NAME} ${OBJECTS}
+		${CC} ${PFLAG} ${CFLAGS} -o ${NAME} ${OBJECTS} && ${RM} ${OBJECTS}
 
 clean:	
 		${RM} ${OBJECTS}
