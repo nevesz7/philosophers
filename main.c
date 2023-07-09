@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 20:34:58 by rarobert          #+#    #+#             */
-/*   Updated: 2023/07/04 11:47:03 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/07/09 20:09:01 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,10 @@
 
 int	main(int argc, char *argv[])
 {
-	start_threads(argv[1]);
+	t_chef		*chef;
+
+	chef = init_chef(argc, argv);
+	if (chef == MUTS)
+		exit(0);
+	fre_e(chef);
 }

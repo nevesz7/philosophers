@@ -6,13 +6,12 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 23:49:58 by rarobert          #+#    #+#             */
-/*   Updated: 2023/07/09 16:35:46 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/07/09 20:06:42 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "messages.h"
 #include "philo.h"
-#include "utils.h"
 
 int	should_we_stop(t_chef *chef)
 {

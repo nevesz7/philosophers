@@ -6,13 +6,12 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 00:33:47 by rarobert          #+#    #+#             */
-/*   Updated: 2023/07/09 15:54:29 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/07/09 20:08:33 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 #include "messages.h"
-#include <stdio.h>
 
 void	slip(t_pil philo)
 {
