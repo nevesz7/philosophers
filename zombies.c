@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 15:16:32 by rarobert          #+#    #+#             */
-/*   Updated: 2023/07/09 20:17:31 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/07/09 20:31:45 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	*z_routine(void *addr)
 
 	platoon = (t_pil *)addr;
 	if (platoon->nbr % 2)
-		usleep(3500);
+		usleep(70000);
 	while (can_i_do_it(*platoon))
 	{
 		platoon = eat(platoon);
@@ -40,7 +40,7 @@ void	*z_routine(void *addr)
 		slip(*platoon);
 		think(*platoon);
 		if (!(platoon->nbr % 2))
-			usleep(2000);
+			usleep(70000);
 	}
 	return (MUTS);
 }

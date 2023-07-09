@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 15:12:14 by rarobert          #+#    #+#             */
-/*   Updated: 2023/07/09 20:18:22 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/07/09 20:23:49 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ t_pil	init_philo(int index, t_chef *chef)
 	philo.last_meal = (unsigned long *)malloc(sizeof(unsigned long));
 	philo.last_meal[0] = get_time();
 	philo.meals_eaten = 0;
-	philo.fork_knife = chef->forks + index;
-	philo.fork_spoon = chef->forks + ((index + 1) % chef->input.nbr_of_pils);
+	philo.fork_spoon = chef->forks + index;
+	philo.fork_knife = chef->forks + ((index + 1) % chef->input.nbr_of_pils);
 	return (philo);
 }

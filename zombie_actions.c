@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 00:33:47 by rarobert          #+#    #+#             */
-/*   Updated: 2023/07/09 20:08:33 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/07/09 20:25:43 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ static int	fork_knife(t_pil philo)
 	pthread_mutex_lock(philo.fork_knife);
 	if (!can_i_do_it(philo))
 	{
-		pthread_mutex_unlock(philo.fork_knife);
 		pthread_mutex_unlock(philo.fork_spoon);
+		pthread_mutex_unlock(philo.fork_knife);
 		return (FALSE);
 	}
 	lights_camera_action(philo.nbr, philo.start_time, FORK, philo.fd);
