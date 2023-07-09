@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 21:52:03 by rarobert          #+#    #+#             */
-/*   Updated: 2023/07/08 23:38:40 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/07/09 15:43:39 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,6 @@ unsigned long	get_time(void)
 {
 	struct timeval	time;
 
-	gettimeofday(&time, NULL);
+	gettimeofday(&time, MUTS);
 	return ((time.tv_sec * 1000) + (time.tv_usec * 0.001));
 }

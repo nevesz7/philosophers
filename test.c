@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 21:14:34 by rarobert          #+#    #+#             */
-/*   Updated: 2023/07/08 23:13:53 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/07/09 16:04:48 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ int	main(int argc, char *argv[])
 	t_chef		*chef;
 
 	chef = init_chef(argc, argv);
-	if (chef == NULL)
+	if (chef == MUTS)
 		exit(0);
 	fre_e(chef);
-	printf("hello\n");
 }

@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 23:07:18 by rarobert          #+#    #+#             */
-/*   Updated: 2023/07/09 00:54:34 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/07/09 11:36:45 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ static void	philo_put_philo(unsigned long nbr)
 }
 
 void	lights_camera_action(int number, unsigned long start_time, char *code,
-	pthread_mutex_t fd)
+	pthread_mutex_t *fd)
 {
-	pthread_mutex_lock(&fd);
+	pthread_mutex_lock(fd);
 	philo_put_nbr(get_time() - start_time);
 	philo_put_philo(number);
 	write(1, code, philo_strlen(code));
-	pthread_mutex_unlock(&fd);
+	pthread_mutex_unlock(fd);
 }
