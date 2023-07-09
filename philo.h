@@ -40,9 +40,13 @@ typedef struct s_mutexes {
 typedef struct s_chef {
 	int					dinner_is_over;
 	pthread_mutex_t		*forks;
+	pthread_mutex_t		dinner;
+	pthread_mutex_t		fd;
+	pthread_mutex_t		hunger;
+	pthread_mutex_t		life;
+	pthread_mutex_t		time;
 	pthread_t			chef;
 	struct s_input		input;
-	struct s_mutexes	muts;
 	struct s_pil		*pils;
 	unsigned long		start_time;
 	unsigned long		time_passed;
@@ -55,9 +59,13 @@ typedef struct s_pil {
 	int					nbr;
 	pthread_mutex_t		*fork_spoon;
 	pthread_mutex_t		*fork_knife;
+	pthread_mutex_t		dinner;
+	pthread_mutex_t		fd;
+	pthread_mutex_t		hunger;
+	pthread_mutex_t		life;
+	pthread_mutex_t		time;
 	pthread_t			pil;
 	struct s_input		input;
-	struct s_mutexes	*muts;
 	unsigned long		start_time;
 	unsigned long		time_passed;
 }	t_pil;

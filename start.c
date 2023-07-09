@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 15:12:14 by rarobert          #+#    #+#             */
-/*   Updated: 2023/07/09 01:17:19 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/07/09 11:31:56 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ void	start_dinner(t_chef *chef, int amount)
 
 	i = -1;
 	chef->pils = (t_pil *)malloc(sizeof(t_pil) * amount);
-	chef->muts.forks = malloc(sizeof(pthread_mutex_t) * amount);
+	chef->forks = malloc(sizeof(pthread_mutex_t) * amount);
 	while (++i < amount)
-		pthread_mutex_init(&chef->muts.forks[i], NULL);
-	pthread_mutex_init(&chef->muts.dinner, NULL);
-	pthread_mutex_init(&chef->muts.fd, NULL);
-	pthread_mutex_init(&chef->muts.hunger, NULL);
-	pthread_mutex_init(&chef->muts.life, NULL);
-	pthread_mutex_init(&chef->muts.time_passed, NULL);
+		pthread_mutex_init(&chef->forks[i], NULL);
+	pthread_mutex_init(&chef->dinner, NULL);
+	pthread_mutex_init(&chef->fd, NULL);
+	pthread_mutex_init(&chef->hunger, NULL);
+	pthread_mutex_init(&chef->life, NULL);
+	pthread_mutex_init(&chef->time, NULL);
 	i = -1;
 	while (++i < amount)
 		chef->pils[i] = init_philo(i, chef);
@@ -74,13 +74,17 @@ t_pil	init_philo(int index, t_chef *chef)
 	t_pil	philo;
 
 	philo.nbr = index + 1;
-	philo.muts = &chef->muts;
 	philo.dinner_is_over = chef->dinner_is_over;
+	philo.dinner = chef->dinner;
 	philo.input = chef->input;
+	philo.fd = chef->fd;
+	philo.hunger = chef->hunger;
+	philo.life = chef->life;
+	philo.time = chef->time;
 	philo.start_time = chef->start_time;
 	philo.last_meal = philo.start_time;
 	philo.meals_eaten = 0;
-	philo.fork_spoon = chef->muts.forks + index++;
-	philo.fork_knife = chef->muts.forks + (index % chef->input.nbr_of_pils);
+	philo.fork_spoon = chef->forks + index++;
+	philo.fork_knife = chef->forks + (index % chef->input.nbr_of_pils);
 	return (philo);
 }

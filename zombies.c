@@ -6,7 +6,7 @@
 /*   By: rarobert <rarobert@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 15:16:32 by rarobert          #+#    #+#             */
-/*   Updated: 2023/07/09 01:18:09 by rarobert         ###   ########.fr       */
+/*   Updated: 2023/07/09 11:29:11 by rarobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 int	can_i_do_it(t_pil philo)
 {
-	pthread_mutex_lock(&philo.muts->dinner);
+	pthread_mutex_lock(&philo.dinner);
 	if (philo.dinner_is_over)
 	{
-		pthread_mutex_unlock(&philo.muts->dinner);
+		pthread_mutex_unlock(&philo.dinner);
 		return (FALSE);
 	}
-	pthread_mutex_unlock(&philo.muts->dinner);
+	pthread_mutex_unlock(&philo.dinner);
 	return (TRUE);
 }
 
